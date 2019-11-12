@@ -81,7 +81,7 @@ class UsbcontrolPlugin(octoprint.plugin.SettingsPlugin,
 			try:
 				self._logger.info("usb2 `{}`...".format(strArg2))
 				location =                          "--loc=1-1.1" if self.get_template_vars()['isRaspi3Bplus'] else "--loc=1-1"
-				output =                            call(["sudo", "./uhubctl", location, "--ports=2", "--action=" + strArg2], cwd=uhubctlFolder)
+				output =                            call(["sudo", "./uhubctl", location, "--ports=2", "--action=" + strArg2, "--r 100"], cwd=uhubctlFolder)
 				if output > 0:
 					self._logger.info("  uhubctrl returned: {}".format(output))
 			except OSError as e:
